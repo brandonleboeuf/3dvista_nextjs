@@ -53,8 +53,8 @@ export default function index() {
         />
         <meta name="description" content="Virtual Tour" />
         <meta name="theme-color" content="#FFFFFF" />
-        <script src="./lib/tdvplayer.js"></script>
-        <script src="./script.js"></script>
+        <script src="lib/tdvplayer.js"></script>
+        <script src="script.js"></script>
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
@@ -93,7 +93,7 @@ export default function index() {
                 if (tour) return;
 
                 if (
-                  /AppleWebKit/.test(navigator.userAgent)
+                  /AppleWebKit/.test(navigator.userAgent) && /Mobile/.test(navigator.userAgent)
                 ) {
                   let preloadContainer = document.getElementById("preloadContainer");
                   if (preloadContainer)
@@ -227,7 +227,7 @@ export default function index() {
 
               function onLoad() {
                 if (
-                  /AppleWebKit/.test(navigator.userAgent)
+                  /AppleWebKit/.test(navigator.userAgent) && /Mobile/.test(navigator.userAgent)
                 ) {
                   let onOrientationChange = function () {
                     document.documentElement.style.height = "initial";

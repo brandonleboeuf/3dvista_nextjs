@@ -1,34 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Use 3DVista in a Next.js app
+## 1. Export from 3DVista
+- Clicking _Publish_
+- Select _For Web / Mobile_
+- Set the Destination to a New Folder called _3DVista_ (this will end up in you next.js projects _/public_ directory)
+- Click _Publish_
+## 2. Add to next.js project
+- Add the newly created _3DVista_ folder into the pages directory of your project
+## 3. Move files/folders location
+- Move these files from /pages/3DVista to /public:
+  - /lib
+  - /locale
+  - /media
+  - script_general.js
+  - script.js
+## 4. CSS
+- Create a new file called _3dvista.css_
+- Remove all declarations in the style tag in /pages/index.htm and place them in _3dvista.css_
+- Remove all inline styles, replacing with a class, and putting these classes into _3dvista.css_
+- import _3dvista.css_ file at the top of __app.js_
+## 5. Edit index.htm
+- Rename _index.htm_ to _index.jsx_
+- Remove outer html and head tags and the !DOCTYPE declaration:
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  ...
+  </head>
+</html>
+```
+- Convert to a functional component
+```jsx
+import Head from "next/head";
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
+export default function index() {
+  return (
+    <div>
+      <Head>
+      ...
+      </Head>
+    <div>
+  )
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Convert script tag to dangerouslySetHtml:
+```html
+<script type="text/javascript">
+  var tour;
+  var devicesUrl = {"general":"script_general.js?v=1640882506117"};
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+  (function() {
+    var deviceType = ['general'];
+...
+</script>
+```
+to
+```jsx
+<script
+  type="text/javascript"
+  dangerouslySetInnerHTML={{
+    __html: `
+      let tour;
+      let devicesUrl = { general: "script_general.js" };
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+      (function () {
+        let deviceType = ["general"];
+...
+</script>
+```
+note: Be sure to have the __html wrapped in backticks `` to avoid single/double quote conflicts
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Remove comment which is causing an error:
 
-## Learn More
+```//Force hide. Some cases the transitionend event isn't dispatched with an iFrame.```
 
-To learn more about Next.js, take a look at the following resources:
+- Remove the ```isSafariDesktopV11orGreater()``` function, as its causing an error
+- Replace all instances of ```/Mobile\/\w+/``` with ```/Mobile/```, as they are causing a regex error
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Locate the first link tag within the head tag. Identify the version number at the end of the href following the file type (ex. ?v=1640882506117). Remove All occurrences of this throughout the document (highlight, right click and select "Change All Occurrences" )
