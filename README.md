@@ -71,7 +71,7 @@ export default function index() {
   }
 </script>
 ```
-to
+to (*see bonus for alternate strategy here)
 ```jsx
 <script
   type="text/javascript"
