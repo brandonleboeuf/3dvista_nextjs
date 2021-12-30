@@ -1,11 +1,14 @@
 # Use 3DVista in a Next.js app
 
-The default export for 3DVista is not supported for frameworks like React or Next.js. Below are the steps I have taken to get it working on next.js and is accessible via localhost:3000/3DVista.
+The default export for 3DVista is not supported for frameworks like React or Next.js. Below are the steps that need to be taken in order to get 3DVista working on next.js.
 
-I have tested it on
+Once complected it is accessible via localhost:3000/3DVista.
+
+Tested it on:
 - Mac: Chrome/Safari/Firefox
 - PC: Chrome/Safari/Firefox
 - iPhone: Safari/Chrome
+- iPad: Safari/Chrome
 ## 1. Export from 3DVista
 - Clicking _Publish_
 - Select _For Web / Mobile_
