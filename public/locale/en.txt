@@ -1,0 +1,18 @@
+#: locale=en
+
+## Tour
+
+### Description
+
+### Title
+tour.name = Untitled 2
+
+## Media
+
+### Title
+panorama_06775DB7_0C2E_D9EB_41A3_14479EFA84DD.label = vista3d_panorama
+
+## Action
+
+### URL
+PopupWebFrameBehaviour_024AFB7F_0C32_B95B_41A4_0AC5FA979622.url = https://adidasmeeting2022.com/
