@@ -8,6 +8,7 @@ body {
   padding: 0;
   overflow: hidden;
 }
+
 .fill-viewport {
   position: fixed;
   top: 0;
@@ -18,15 +19,19 @@ body {
   margin: 0;
   overflow: hidden;
 }
+
 .fill-viewport.landscape-left {
   left: env(safe-area-inset-left);
 }
+
 .fill-viewport.landscape-right {
   right: env(safe-area-inset-right);
 }
+
 #viewer {
   z-index: 1;
 }
+
 #preloadContainer {
   z-index: 2;
   opacity: 0;
