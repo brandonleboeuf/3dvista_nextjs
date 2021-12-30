@@ -78,3 +78,23 @@ note: Be sure to have the __html wrapped in backticks `` to avoid single/double 
 - Replace all instances of ```/Mobile\/\w+/``` with ```/Mobile/```, as they are causing a regex error
 
 - Locate the first link tag within the head tag. Identify the version number at the end of the href following the file type (ex. ?v=1640882506117). Remove All occurrences of this throughout the document (highlight, right click and select "Change All Occurrences" )
+
+&nbsp;  
+
+# BONUS
+- Move the _dangerouslySetInnerHTML_ into it's own .js file to be imported into your project!
+innerHTML.js
+```js
+const innerHTML = `let tour;
+let devicesUrl = { general: "script_general.js" };
+
+(function () {...}
+`
+export default innerHTML;
+```
+index.jsx
+```jsx
+import innerHTML from './innerHTML.js';
+
+<script type="text/javascript" dangerouslySetInnerHTML={{ __html: innerHTML}}></script>
+```
