@@ -16,14 +16,14 @@ Tested it on:
 - Click _Publish_
 ## 2. Add to next.js project
 - Add the newly created _3DVista_ folder into the pages directory of your project
-## 3. Move files/folders location
+## 3. Move files/folders
 - Move these files from /pages/3DVista to /public:
   - /lib
   - /locale
   - /media
   - script_general.js
   - script.js
-## 4. CSS
+## 4. Update CSS
 - Create a new file called _3dvista.css_
 - Remove all declarations in the style tag in /pages/index.htm and place them in _3dvista.css_
 - Remove all inline styles, replacing with a class, and putting these classes into _3dvista.css_
@@ -37,6 +37,9 @@ Tested it on:
   <head>
   ...
   </head>
+  <body>
+  ...
+  </body>
 </html>
 ```
 - Convert to a functional component
@@ -49,6 +52,9 @@ export default function index() {
       <Head>
       ...
       </Head>
+      <section>
+      ...
+      </section>
     <div>
   )
 ```
@@ -62,6 +68,7 @@ export default function index() {
   (function() {
     var deviceType = ['general'];
 ...
+  }
 </script>
 ```
 to
@@ -75,14 +82,13 @@ to
 
       (function () {
         let deviceType = ["general"];
-...
+      ...
+      `
 </script>
 ```
-note: Be sure to have the __html wrapped in backticks `` to avoid single/double quote conflicts
+**NOTE:** Be sure to have the __html wrapped in backticks `` to avoid single/double quote conflicts
 
-- Remove comment which is causing an error:
-
-```//Force hide. Some cases the transitionend event isn't dispatched with an iFrame.```
+- Remove this comment which is causing an error: ```//Force hide. Some cases the transitionend event isn't dispatched with an iFrame.```
 
 - Remove the ```isSafariDesktopV11orGreater()``` function, as its causing an error
 - Replace all instances of ```/Mobile\/\w+/``` with ```/Mobile/```, as they are causing a regex error
