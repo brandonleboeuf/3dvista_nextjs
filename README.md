@@ -2,8 +2,6 @@
 
 The default export for 3DVista is not supported for frameworks like React or Next.js. Below are the steps that need to be taken in order to get 3DVista working on next.js.
 
-Once complected it is accessible via localhost:3000/3DVista.
-
 Tested it on:
 - Mac: Chrome/Safari/Firefox
 - PC: Chrome/Safari/Firefox
