@@ -10,7 +10,7 @@ Tested it on:
 - iPhone: Safari/Chrome
 - iPad: Safari/Chrome
 ## 1. Export from 3DVista
-- Clicking _Publish_
+- Click _Publish_
 - Select _For Web / Mobile_
 - Set the Destination to a New Folder called _3DVista_ (this will end up in you next.js projects _/public_ directory)
 - Click _Publish_
@@ -93,7 +93,7 @@ to (*see bonus for alternate strategy here)
 - Remove the ```isSafariDesktopV11orGreater()``` function, as its causing an error
 - Replace all instances of ```/Mobile\/\w+/``` with ```/Mobile/```, as they are causing a regex error
 
-- Locate the first link tag within the head tag. Identify the version number at the end of the href following the file type (ex. ?v=1640882506117). Remove All occurrences of this throughout the document (highlight, right click and select "Change All Occurrences" )
+- There are query parameters on the .txt, .js, and .jpg in the link and script tags that need to be removed. Locate this (looks something like this `?v=1640882506117`) at the first link tag within the head tag. Remove All occurrences of this query parameter throughout the document (highlight, right click and select “Change All Occurrences”)
 
 &nbsp;  
 
