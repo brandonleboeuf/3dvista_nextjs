@@ -5,7 +5,7 @@
 ### Description
 
 ### Title
-tour.name = Untitled 2
+tour.name = 3DVista in Next.js
 
 ## Media
 
